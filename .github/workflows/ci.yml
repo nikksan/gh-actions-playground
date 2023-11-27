@@ -26,6 +26,8 @@ jobs:
     test:
         runs-on: ubuntu-latest
         name: Test
+        env:
+            NODE_VERSION: ${{ vars.NODE_VERSION }}
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-node@v4
