@@ -5,32 +5,32 @@ on: [push]
 jobs:
     lint:
         runs-on: ubuntu-latest
+        name: Lint
         steps:
             - uses: actions/checkout@v4
-            - name: Lint
-              uses: actions/setup-node@v4
+            - uses: actions/setup-node@v4
               with:
-                  node-version: "16.x"
-                  cache: 'npm'
+                node-version: "16.x"
+                cache: 'npm'
             - run: npm ci
             - run: npm run lint
     audit:
         runs-on: ubuntu-latest
+        name: Audit
         steps:
             - uses: actions/checkout@v4
-            - name: Audit
-              uses: actions/setup-node@v4
+            - uses: actions/setup-node@v4
               with:
-                  node-version: "16.x"
+                node-version: "16.x"
             - run: npm audit --audit-level=moderate
     test:
         runs-on: ubuntu-latest
+        name: Test
         steps:
             - uses: actions/checkout@v4
-            - name: Test
-              uses: actions/setup-node@v4
+            - uses: actions/setup-node@v4
               with:
-                  node-version: "16.x"
-                  cache: 'npm'
+                node-version: "16.x"
+                cache: 'npm'
             - run: npm ci
             - run: npm test
