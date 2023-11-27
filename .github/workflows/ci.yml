@@ -3,16 +3,43 @@ name: CI
 on: [push]
 
 jobs:
-    build:
+    install:
         runs-on: ubuntu-latest
 
         steps:
             - uses: actions/checkout@v4
-            - name: Lint, Audit and Test
+            - name: Install
               uses: actions/setup-node@v3
               with:
                   node-version: "16.x"
             - run: npm ci
+    lint:
+        runs-on: ubuntu-latest
+        needs: install
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "16.x"
             - run: npm run lint
+    audit:
+        runs-on: ubuntu-latest
+        needs: install
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "16.x"
             - run: npm audit --audit-level=moderate
+    test:
+        runs-on: ubuntu-latest
+        needs: install
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "16.x"
             - run: npm test
