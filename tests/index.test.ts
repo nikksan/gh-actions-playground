@@ -1,11 +1,12 @@
-import request from 'supertest';
-import app from '../src/index';
+import request from 'supertest'
+import app from '../src/index'
 
 describe('Random test', () => {
-    it('should return string on GET /', (done) => {
-        request(app)
-            .get('/')
-            .expect('Hello World!')
-            .expect(200, done);
-    });
-});
+  it('should return string on GET /', async () => {
+    const response = await request(app)
+      .get('/')
+      .expect(200)
+
+    expect(response.text).toEqual('Hello World!')
+  })
+})
