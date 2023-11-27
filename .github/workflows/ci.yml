@@ -24,6 +24,7 @@ jobs:
                 node-version: ${{ vars.NODE_VERSION }}
             - run: npm audit --audit-level=moderate
     test:
+        environment: testing
         runs-on: ubuntu-latest
         name: Test
         env:
