@@ -1,4 +1,4 @@
-name: CI ${{ github.event.head_commit.message }}
+name: "CI ${{ github.event.head_commit.message }}"
 
 on: [push]
 
