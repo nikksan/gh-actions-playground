@@ -8,9 +8,10 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: Lint
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v4
               with:
                   node-version: "16.x"
+                  cache: 'npm'
             - run: npm ci
             - run: npm run lint
     audit:
@@ -18,7 +19,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: Audit
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v4
               with:
                   node-version: "16.x"
             - run: npm audit --audit-level=moderate
@@ -27,8 +28,9 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: Test
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v4
               with:
                   node-version: "16.x"
+                  cache: 'npm'
             - run: npm ci
             - run: npm test
