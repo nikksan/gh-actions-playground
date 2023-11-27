@@ -7,6 +7,8 @@ describe('Random test', () => {
       .get('/')
       .expect(200)
 
+    console.log(process.env)
+
     expect(response.text).toEqual('Hello World!')
   })
 })
